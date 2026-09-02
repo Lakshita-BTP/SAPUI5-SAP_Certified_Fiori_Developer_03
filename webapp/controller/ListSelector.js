@@ -6,10 +6,7 @@ sap.ui.define([
 	return BaseObject.extend("student.com.sap.training.advancedsapui5.fullscreen.controller.ListSelector", {
 
 		constructor : function () {
-			this._oWhenListHasBeenSet = new Promise(function (fnResolveListHasBeenSet) {
-				this._fnResolveListHasBeenSet = fnResolveListHasBeenSet;
-			}.bind(this));
-
+			this._oWhenListHasBeenSet = new Promise(function (fnResolveListHasBeenSet) { this._fnResolveListHasBeenSet = fnResolveListHasBeenSet; }.bind(this));
 
 			this.oWhenListLoadingIsDone = new Promise(function (fnResolve, fnReject) {
 				this._oWhenListHasBeenSet

@@ -19,9 +19,7 @@ sap.ui.define([
             },
 
             _navigateToCarrierDetails: function (sCarrierId, bReplace) {
-                this.getRouter().navTo("flights", {
-                    carrid: sCarrierId
-                }, bReplace);
+                this.getRouter().navTo("flights", { carrid: sCarrierId }, bReplace);
             },
 
             _showDetail: function (oItem) {
