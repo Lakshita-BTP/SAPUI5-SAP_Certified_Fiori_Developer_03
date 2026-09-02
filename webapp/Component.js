@@ -3,11 +3,12 @@
  */
 
 sap.ui.define([
-        "sap/ui/core/UIComponent",
-        "sap/ui/Device",
-        "student/com/sap/training/advancedsapui5/fullscreen/model/models"
-    ],
-    function (UIComponent, Device, models) {
+    "sap/ui/core/UIComponent",
+    "sap/ui/Device",
+    "student/com/sap/training/advancedsapui5/fullscreen/model/models",
+    "student/com/sap/training/advancedsapui5/fullscreen/controller/ListSelector"
+],
+    function (UIComponent, Device, models, ListSelector) {
         "use strict";
 
         return UIComponent.extend("student.com.sap.training.advancedsapui5.fullscreen.Component", {
@@ -23,6 +24,9 @@ sap.ui.define([
             init: function () {
                 // call the base component's init function
                 UIComponent.prototype.init.apply(this, arguments);
+
+                // instantiation of the listselector
+                this.oListSelector = new ListSelector();
 
                 // enable routing
                 this.getRouter().initialize();
