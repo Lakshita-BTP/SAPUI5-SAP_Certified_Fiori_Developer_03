@@ -46,5 +46,11 @@ sap.ui.define([
                 });
             },
 
+            handleClose: function () {
+                var oView = this.getView();
+                oView.getModel("mainView").setProperty("/layout", "OneColumn");
+                this.getRouter().navTo("Overview", {}, true);
+            }
+
         });
     });

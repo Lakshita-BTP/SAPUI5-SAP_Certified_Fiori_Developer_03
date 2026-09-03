@@ -1,7 +1,8 @@
 sap.ui.define([
-    "student/com/sap/training/advancedsapui5/fullscreen/controller/BaseController"
+    "student/com/sap/training/advancedsapui5/fullscreen/controller/BaseController",
+    "sap/ui/Device"
 ],
-    function (Controller) {
+    function (Controller, Device) {
         "use strict";
 
         return Controller.extend("student.com.sap.training.advancedsapui5.fullscreen.controller.Carrier", {
@@ -23,8 +24,9 @@ sap.ui.define([
             },
 
             _showDetail: function (oItem) {
+                var bReplace = !Device.system.phone;
                 var sCarrierId = oItem.getBindingContext().getProperty("Carrid");
-                this._navigateToCarrierDetails(sCarrierId, true);
+                this._navigateToCarrierDetails(sCarrierId, bReplace);
             },
 
             onSelect: function (oEvent) {
@@ -38,6 +40,11 @@ sap.ui.define([
             _onListMatched: function () {
                 this.getListSelector().oWhenListLoadingIsDone.then(
                     function (mParams) {
+
+                        if (mParams.list.getMode() === "None") {
+                            return;
+                        }
+
                         var sObjectId = mParams.oFirstListItem.getBindingContext().getProperty("Carrid");
                         this._navigateToCarrierDetails(sObjectId, true);
                     }.bind(this)
